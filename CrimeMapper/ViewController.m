@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #define METERS_PER_MILE 1609.344
 
-
 @interface ViewController ()
 
 @end
@@ -40,20 +39,31 @@ int offset=0;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 10*METERS_PER_MILE, 10*METERS_PER_MILE);
     [_mapView setRegion:viewRegion animated:YES];
 }
+
 -(void)getAnnotations{
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSLog(@"Offset is %d", offset);
-    //, offset
-    NSString* urlString = [NSString stringWithFormat:@"https://data.sfgov.org/resource/ritf-b9ki.json?$limit=25&$offset=%d",offset];
+    
+    NSDateFormatter *formatter;
+
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setMonth:-3];
+    NSDate *lastMonth = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:currentDate options:0];
+
+    NSString* urlString = [NSString stringWithFormat:@"https://data.sfgov.org/resource/ritf-b9ki.json?$limit=25&$offset=%d&$where=date>\'%@\'",offset,[formatter stringFromDate:lastMonth]];
+    
     [_loadingIndicator startAnimating];
     [_loadingIndicator setHidden:NO];
     _jsonArray=[NSMutableArray array];
     [_mapView removeAnnotations:_mapView.annotations];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error!=nil) {
-            NSLog(@"error %@", error);
             [_loadingIndicator stopAnimating];
             [_loadingIndicator setHidden:YES];
             return ;
@@ -72,7 +82,6 @@ int offset=0;
                 return;
                 
             }
-            NSLog(@" jsonData - %@", _jsonArray);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self plotOnMapView];
             });
@@ -132,7 +141,6 @@ int offset=0;
         }
     }
     
-    NSLog(@" districtName %@", districtCountDict);
     NSArray *sortedArray;
     
     sortedArray = [districtCountDict keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
@@ -149,7 +157,6 @@ int offset=0;
         return (NSComparisonResult)NSOrderedSame;
     }];
     
-    NSLog(@" sortedArray %@", sortedArray);
     
     _colorDictionary= [[NSMutableDictionary alloc] init];
     for (int i=0;i<[sortedArray count];i++) {
