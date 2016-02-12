@@ -22,13 +22,13 @@ int offset=0;
     [super viewDidLoad];
     [_centerButton setEnabled:NO];
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-
+    
     [navigationBar setBarTintColor:[UIColor colorWithRed:244.0/255.0 green:146.0/255.0 blue:10.0/255.0 alpha:1]];
     [navigationBar setTintColor:[UIColor whiteColor]];
     [navigationBar setTranslucent:NO];
     //ff0000,
     _colorArray= [NSMutableArray arrayWithObjects:[UIColor colorWithRed:1 green:0 blue:0 alpha:1],[UIColor colorWithRed:0.922 green:0.212 blue:0 alpha:1], [UIColor colorWithRed:0.898 green:0.282 blue:0 alpha:1.0], [UIColor colorWithRed:0.847 green:0.427 blue:0 alpha:1.0], [UIColor colorWithRed:0.824 green:0.498 blue:0 alpha:1.0], [UIColor colorWithRed:0.773 green:0.639 blue:0 alpha:1.0], [UIColor colorWithRed:0.725 green:0.784 blue:0 alpha:1.0], [UIColor colorWithRed:0.651 green:1 blue:0 alpha:1.0], nil];
-     [_mapView setDelegate:self];
+    [_mapView setDelegate:self];
     [self getAnnotations];
     [self reloadToolBar];
 }
@@ -58,7 +58,7 @@ int offset=0;
             [_loadingIndicator setHidden:YES];
             return ;
         }
-
+        
         NSObject *jsonObject= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         if ([jsonObject isKindOfClass:[NSArray class]]) {
@@ -77,7 +77,7 @@ int offset=0;
                 [self plotOnMapView];
             });
         }
- 
+        
     }];
     [dataTask resume];
     
@@ -157,9 +157,9 @@ int offset=0;
             [_colorDictionary setObject:[_colorArray objectAtIndex:7] forKey:[sortedArray objectAtIndex:i]];
         }else
             [_colorDictionary setObject:[_colorArray objectAtIndex:i] forKey:[sortedArray objectAtIndex:i]];
+        
+    }
     
-        }
-
     
     [_loadingIndicator stopAnimating];
     [_loadingIndicator setHidden:YES];
