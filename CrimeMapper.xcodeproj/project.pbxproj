@@ -13,6 +13,9 @@
 		06427F321C6D190700543BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06427F301C6D190700543BD5 /* Main.storyboard */; };
 		06427F341C6D190700543BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06427F331C6D190700543BD5 /* Assets.xcassets */; };
 		06427F371C6D190700543BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06427F351C6D190700543BD5 /* LaunchScreen.storyboard */; };
+		06427F401C6D1A1300543BD5 /* MapDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06427F3F1C6D1A1300543BD5 /* MapDetailsViewController.m */; };
+		06427F421C6D222300543BD5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06427F411C6D222300543BD5 /* MapKit.framework */; };
+		06F0511B1C6D28FA00B93504 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0511A1C6D28FA00B93504 /* UserAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,11 @@
 		06427F331C6D190700543BD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06427F361C6D190700543BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06427F381C6D190700543BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06427F3E1C6D1A1300543BD5 /* MapDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailsViewController.h; sourceTree = "<group>"; };
+		06427F3F1C6D1A1300543BD5 /* MapDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailsViewController.m; sourceTree = "<group>"; };
+		06427F411C6D222300543BD5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		06F051191C6D28FA00B93504 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAnnotation.h; path = ../UserAnnotation.h; sourceTree = "<group>"; };
+		06F0511A1C6D28FA00B93504 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAnnotation.m; path = ../UserAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06427F421C6D222300543BD5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,7 @@
 		06427F1B1C6D190700543BD5 = {
 			isa = PBXGroup;
 			children = (
+				06427F411C6D222300543BD5 /* MapKit.framework */,
 				06427F261C6D190700543BD5 /* CrimeMapper */,
 				06427F251C6D190700543BD5 /* Products */,
 			);
@@ -62,6 +72,10 @@
 				06427F2B1C6D190700543BD5 /* AppDelegate.m */,
 				06427F2D1C6D190700543BD5 /* ViewController.h */,
 				06427F2E1C6D190700543BD5 /* ViewController.m */,
+				06427F3E1C6D1A1300543BD5 /* MapDetailsViewController.h */,
+				06427F3F1C6D1A1300543BD5 /* MapDetailsViewController.m */,
+				06F051191C6D28FA00B93504 /* UserAnnotation.h */,
+				06F0511A1C6D28FA00B93504 /* UserAnnotation.m */,
 				06427F301C6D190700543BD5 /* Main.storyboard */,
 				06427F331C6D190700543BD5 /* Assets.xcassets */,
 				06427F351C6D190700543BD5 /* LaunchScreen.storyboard */,
@@ -110,6 +124,7 @@
 				TargetAttributes = {
 					06427F231C6D190700543BD5 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 8E3H44KA45;
 					};
 				};
 			};
@@ -149,6 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F0511B1C6D28FA00B93504 /* UserAnnotation.m in Sources */,
+				06427F401C6D1A1300543BD5 /* MapDetailsViewController.m in Sources */,
 				06427F2F1C6D190700543BD5 /* ViewController.m in Sources */,
 				06427F2C1C6D190700543BD5 /* AppDelegate.m in Sources */,
 				06427F291C6D190700543BD5 /* main.m in Sources */,
@@ -260,7 +277,8 @@
 		06427F3C1C6D190700543BD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CrimeMapper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mallikarjun.CrimeMapper;
@@ -271,7 +289,8 @@
 		06427F3D1C6D190700543BD5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CrimeMapper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mallikarjun.CrimeMapper;
@@ -298,6 +317,7 @@
 				06427F3D1C6D190700543BD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
