@@ -17,6 +17,8 @@
 @property(strong, nonatomic) NSMutableArray*jsonArray;
 @property(strong, nonatomic) NSMutableArray*colorArray;
 @property(strong, nonatomic) NSMutableDictionary*colorDictionary;
+@property(strong, nonatomic) NSURLSession *session;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftButton;

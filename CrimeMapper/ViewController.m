@@ -22,6 +22,8 @@ int offset=0;
     [_centerButton setEnabled:NO];
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     
+    _session = [NSURLSession sharedSession];
+    
     [navigationBar setBarTintColor:[UIColor colorWithRed:244.0/255.0 green:146.0/255.0 blue:10.0/255.0 alpha:1]];
     [navigationBar setTintColor:[UIColor whiteColor]];
     [navigationBar setTranslucent:NO];
@@ -42,10 +44,7 @@ int offset=0;
 
 -(void)getAnnotations{
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    
     NSDateFormatter *formatter;
-
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
@@ -61,7 +60,7 @@ int offset=0;
     _jsonArray=[NSMutableArray array];
     [_mapView removeAnnotations:_mapView.annotations];
     
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *dataTask = [_session dataTaskWithURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error!=nil) {
             [_loadingIndicator stopAnimating];
