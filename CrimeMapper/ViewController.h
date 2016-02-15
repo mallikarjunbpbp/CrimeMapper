@@ -13,19 +13,18 @@
 
 @interface ViewController : UIViewController<MKMapViewDelegate,  CLLocationManagerDelegate>
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property(strong, nonatomic) NSMutableArray*jsonArray;
 @property(strong, nonatomic) NSMutableArray*colorArray;
 @property(strong, nonatomic) NSMutableDictionary*colorDictionary;
 @property(strong, nonatomic) NSURLSession *session;
 
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *centerButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightButton;
-- (IBAction)leftButtonPressed:(id)sender;
 
+- (IBAction)leftButtonPressed:(id)sender;
 - (IBAction)rightButtonPressed:(id)sender;
 
 @end
